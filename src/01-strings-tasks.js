@@ -5,7 +5,6 @@
  *                                                                                           *
  ******************************************************************************************* */
 
-
 /**
  * Returns the result of concatenation of two strings.
  *
@@ -18,10 +17,15 @@
  *   'aa',''    => 'aa'
  *   '',  'bb'  => 'bb'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  const newStr = [];
+  newStr.push(value1);
+  if (value2 === false) {
+    return newStr.join('');
+  }
+  newStr.push(value2);
+  return newStr.join('');
 }
-
 
 /**
  * Returns the length of given string.
@@ -34,8 +38,12 @@ function concatenateStrings(/* value1, value2 */) {
  *   'b'     => 1
  *   ''      => 0
  */
-function getStringLength(/* value */) {
-  throw new Error('Not implemented');
+function getStringLength(value) {
+  let counter = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    counter += 1;
+  }
+  return counter;
 }
 
 /**
@@ -68,7 +76,6 @@ function getStringFromTemplate(/* firstName, lastName */) {
 function extractNameFromTemplate(/* value */) {
   throw new Error('Not implemented');
 }
-
 
 /**
  * Returns a first char of the given string.
@@ -145,7 +152,6 @@ function unbracketTag(/* str */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Converts all characters of the specified string into the upper case
  *
@@ -206,7 +212,6 @@ function getRectangleString(/* width, height */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Encode specified string with ROT13 cipher
  * See details:  https://en.wikipedia.org/wiki/ROT13
@@ -244,7 +249,6 @@ function isString(/* value */) {
   throw new Error('Not implemented');
 }
 
-
 /**
  * Returns playid card id.
  *
@@ -272,7 +276,6 @@ function isString(/* value */) {
 function getCardId(/* value */) {
   throw new Error('Not implemented');
 }
-
 
 module.exports = {
   concatenateStrings,
