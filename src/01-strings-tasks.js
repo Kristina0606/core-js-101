@@ -185,13 +185,8 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-  const newArr = [];
-  for (let i = 0; i < str.length; i += 1) {
-    if (str[i] === ';') {
-      newArr.push(str.slice(0, str[i]));
-    }
-  }
-  return newArr;
+  const newStr = str.split(';');
+  return newStr;
 }
 
 /**
@@ -217,8 +212,13 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+
+function getRectangleString(width, height) {
+  const top = `┌${'─'.repeat(width - 2)}┐\n`;
+  const middle = `│${' '.repeat(width - 2)}│\n`;
+  const bottom = `└${'─'.repeat(width - 2)}┘\n`;
+
+  return `${top}${middle.repeat(height - 2)}${bottom}`;
 }
 
 /**
@@ -237,8 +237,19 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  let res = '';
+  for (let i = 0; i < str.length; i + 1) {
+    const char = str[i];
+    if (char >= 'a' && char <= 'z') {
+      res += String.fromCharCode(((char.charCodeAt(0) - 97 + 13) % 26) + 97);
+    } else if (char >= 'A' && char <= 'Z') {
+      res += String.fromCharCode(((char.charCodeAt(0) - 65 + 13) % 26) + 65);
+    } else {
+      res += char;
+    }
+  }
+  return res;
 }
 
 /**
@@ -254,8 +265,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return isString(value);
 }
 
 /**
